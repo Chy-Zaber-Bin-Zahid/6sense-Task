@@ -78,7 +78,7 @@ function useFormHook() {
     const formDataObject = Object.fromEntries(formData.entries());
     try {
       const result = await axios.post(
-        "http://localhost:3001/api/user/register",
+        "https://sixsense-task-2.onrender.com/api/user/register",
         formDataObject
       );
       if (result) {
