@@ -19,9 +19,8 @@ function useTableHook() {
         console.error("Error fetching users:", error);
       }
     };
-
     fetchUsersData();
-  }, [userData]);
+  }, []);
 
   // Function to handle the click event of the button
   const handleStatus = (idx) => {
@@ -30,7 +29,22 @@ function useTableHook() {
     setButtonStatus(updatedButtonStatus);
   };
 
-  return { userData, handleStatus, buttonStatus };
+  // Delete user
+  const handleDelete = async (user) => {
+    try {
+      const response = await axios.delete(
+        `http://localhost:3001/api/user/${user._id}`
+      );
+      const updatedResponse = await axios.get(
+        "http://localhost:3001/api/user/getData"
+      );
+      setUserData(updatedResponse.data.payload.user);
+    } catch (error) {
+      console.error("Error deleting user:", error);
+    }
+  };
+
+  return { userData, handleStatus, buttonStatus, handleDelete };
 }
 
 export default useTableHook;

@@ -63,7 +63,26 @@ const getData = async (req, res, next) => {
   }
 };
 
+const deleteData = async (req, res, next) => {
+  try {
+    const userId = req.params.id;
+    console.log(userId);
+    const deletedUser = await User.findByIdAndDelete(userId);
+
+    return successResponse(res, {
+      statusCode: 200,
+      message: "user deleted successfully",
+      payload: {
+        user: deletedUser,
+      },
+    });
+  } catch (error) {
+    next(error);
+  }
+};
+
 module.exports = {
   regUser,
   getData,
+  deleteData,
 };

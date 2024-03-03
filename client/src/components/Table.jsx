@@ -1,8 +1,9 @@
 import useTableHook from "../hooks/tableHook";
 import SwapBtn from "./SwapBtn";
+import TableBtn from "./Table child/TableBtn";
 
 function Table() {
-  const { userData, handleStatus, buttonStatus } = useTableHook();
+  const { userData } = useTableHook();
 
   return (
     <section className="flex flex-col justify-center items-center gap-2 w-full">
@@ -18,20 +19,7 @@ function Table() {
             {userData.map((data, idx) => (
               <tr key={data.email} className="border border-gray-300">
                 <td className="border border-gray-300 px-4 py-2">{`${data.firstName} ${data.lastName}`}</td>
-                <td className="border border-gray-300 px-4 py-2 ">
-                  <button className="underline hover:text-gray-700 transition-all duration-300 mr-2">
-                    Details
-                  </button>
-                  <button
-                    onClick={() => handleStatus(idx)}
-                    className="underline hover:text-gray-700 transition-all duration-300 mr-2"
-                  >
-                    {buttonStatus[idx] ? "Unblock" : "Block"}
-                  </button>
-                  <button className="underline text-red-500 hover:text-red-600 transition-all duration-300">
-                    Delete
-                  </button>
-                </td>
+                <TableBtn idx={idx} />
               </tr>
             ))}
           </tbody>
@@ -39,7 +27,7 @@ function Table() {
       ) : (
         <p>Fetching Data...</p>
       )}
-
+      {/* Change to form */}
       <SwapBtn />
     </section>
   );
