@@ -22,7 +22,7 @@ function MyProvider({ children }) {
     setDetails(true);
     try {
       const response = await axios.get(
-        `https://sixsense-task-3.onrender.com/api/user/getData/${user._id}`
+        `http://localhost:3001/api/user/getData/${user._id}`
       );
       setDetailsData(response.data.payload.user);
     } catch (error) {

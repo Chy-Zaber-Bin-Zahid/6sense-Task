@@ -17,7 +17,7 @@ function useDetailsHook() {
     setDetails(false);
     try {
       const response = await axios.post(
-        `https://sixsense-task-3.onrender.com/api/user/updateDetails/${userId}`,
+        `http://localhost:3001/api/user/updateDetails/${userId}`,
         formData
       );
       setUserData((prevUserData) => {

@@ -12,7 +12,7 @@ function useTableHook() {
     const fetchUsersData = async () => {
       try {
         const response = await axios.get(
-          "https://sixsense-task-3.onrender.com/api/user/getData"
+          "http://localhost:3001/api/user/getData"
         );
         setUserData(response.data.payload.user);
       } catch (error) {
@@ -33,10 +33,10 @@ function useTableHook() {
   const handleDelete = async (user) => {
     try {
       const response = await axios.delete(
-        `https://sixsense-task-3.onrender.com/api/user/${user._id}`
+        `http://localhost:3001/api/user/${user._id}`
       );
       const updatedResponse = await axios.get(
-        "https://sixsense-task-3.onrender.com/api/user/getData"
+        "http://localhost:3001/api/user/getData"
       );
       setUserData(updatedResponse.data.payload.user);
     } catch (error) {
