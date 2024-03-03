@@ -3,15 +3,11 @@ const morgan = require("morgan");
 const bodyParser = require("body-parser");
 const createError = require("http-errors");
 
-const {
-  errorResponse,
-  successResponse,
-} = require("./controllers/responseController");
+const { errorResponse } = require("./controllers/responseController");
 const cors = require("cors");
 // const featureProductRouter = require("./routers/featureProductRouter");
 
 const app = express();
-
 
 app.use(cors());
 app.use(morgan("dev"));
@@ -20,7 +16,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
 
 // Router
-// app.use("/api/user", userRouter);
+app.use("/api/user", userRouter);
 
 // Client error handling
 app.use((req, res, next) => {

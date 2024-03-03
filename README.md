@@ -1,8 +1,6 @@
 ## Project Overview and guideline
-
-[Top](#project-overview-and-guideline)  
+ 
 [Functional Requirements](#functional-requirements)  
-[!Important](#important-instructions)
 
 ## Project Setup
 
