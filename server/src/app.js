@@ -5,7 +5,7 @@ const createError = require("http-errors");
 
 const { errorResponse } = require("./controllers/responseController");
 const cors = require("cors");
-// const featureProductRouter = require("./routers/featureProductRouter");
+const userRouter = require("./routers/userRouter");
 
 const app = express();
 

@@ -3,9 +3,15 @@ const bcrypt = require("bcrypt");
 
 const userSchema = new Schema(
   {
-    name: {
+    firstName: {
       type: String,
-      required: [true, "User name is required!"],
+      required: [true, "User first name is required!"],
+      trim: true,
+      maxlength: [30, "The length of user name can be maximum 31 characters"],
+    },
+    lastName: {
+      type: String,
+      required: [true, "User last name is required!"],
       trim: true,
       maxlength: [30, "The length of user name can be maximum 31 characters"],
     },
@@ -21,13 +27,7 @@ const userSchema = new Schema(
         message: "Please enter a valid email!",
       },
     },
-    password: {
-      type: String,
-      required: [true, "User password is required!"],
-      minlength: [6, "The length of user password can be minimum 6 characters"],
-      set: (v) => bcrypt.hashSync(v, bcrypt.genSaltSync(10)),
-    },
-    telephone: {
+    phone: {
       type: String,
       required: [true, "User phone is required!"],
       minlength: [
@@ -38,18 +38,6 @@ const userSchema = new Schema(
         11,
         "The length of user telephone can be maximum 11 characters",
       ],
-    },
-    isAdmin: {
-      type: Boolean,
-      default: false,
-    },
-    isBanned: {
-      type: Boolean,
-      default: false,
-    },
-    payment: {
-      type: String,
-      default: "cash",
     },
   },
   { timestamps: true }

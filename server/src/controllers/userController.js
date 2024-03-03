@@ -1,10 +1,6 @@
-const createError = require("http-errors");
-const bcrypt = require("bcrypt");
 const User = require("../models/userModel");
-const Cart = require("../models/cartModel");
 const { successResponse } = require("./responseController");
 const mongoose = require("mongoose");
-const { findUserById } = require("../services/findUserById");
 
 // Register new user
 const regUser = async (req, res, next) => {
@@ -17,7 +13,7 @@ const regUser = async (req, res, next) => {
     }
 
     // Checking telephone length
-    if (req.body.telephone.length < 11) {
+    if (req.body.phone.length < 11) {
       arr.push("telephone");
     }
 
@@ -51,7 +47,6 @@ const regUser = async (req, res, next) => {
   }
 };
 
-
 module.exports = {
-  regUser
+  regUser,
 };
