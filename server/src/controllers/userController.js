@@ -63,10 +63,10 @@ const getData = async (req, res, next) => {
   }
 };
 
+// Delete User
 const deleteData = async (req, res, next) => {
   try {
     const userId = req.params.id;
-    console.log(userId);
     const deletedUser = await User.findByIdAndDelete(userId);
 
     return successResponse(res, {
@@ -81,8 +81,50 @@ const deleteData = async (req, res, next) => {
   }
 };
 
+// Get User by id
+const getDataId = async (req, res, next) => {
+  try {
+    const userId = req.params.id;
+    const user = await User.findById(userId);
+
+    return successResponse(res, {
+      statusCode: 200,
+      message: "user retrieved successfully",
+      payload: {
+        user: user,
+      },
+    });
+  } catch (error) {
+    next(error);
+  }
+};
+
+// Update Details by id
+const updateDetails = async (req, res, next) => {
+  try {
+    const userId = req.params.id;
+    const updatedDetails = req.body;
+    console.log(updatedDetails);
+    const user = await User.findByIdAndUpdate(userId, updatedDetails, {
+      new: true,
+    });
+
+    return successResponse(res, {
+      statusCode: 200,
+      message: "User details updated successfully",
+      payload: {
+        user: user,
+      },
+    });
+  } catch (error) {
+    next(error);
+  }
+};
+
 module.exports = {
   regUser,
   getData,
   deleteData,
+  getDataId,
+  updateDetails,
 };

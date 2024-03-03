@@ -1,4 +1,5 @@
 import { createContext, useContext, useState } from "react";
+import axios from "axios";
 
 // Creating context api
 const MyContext = createContext();
@@ -14,6 +15,25 @@ function MyProvider({ children }) {
   const [phone, setPhone] = useState("");
   const [change, setChange] = useState("form");
   const [userData, setUserData] = useState([]);
+  const [details, setDetails] = useState(false);
+  const [detailsData, setDetailsData] = useState([]);
+
+  const handleDetails = async (user) => {
+    setDetails(true);
+    try {
+      const response = await axios.get(
+        `http://localhost:3001/api/user/getData/${user._id}`
+      );
+      setDetailsData(response.data.payload.user);
+    } catch (error) {
+      console.error("Error fetching users:", error);
+    }
+  };
+
+  const handleClose = () => {
+    setDetails(false);
+    setDetailsData([]);
+  };
 
   return (
     <MyContext.Provider
@@ -38,6 +58,11 @@ function MyProvider({ children }) {
         setChange,
         userData,
         setUserData,
+        handleDetails,
+        details,
+        setDetails,
+        detailsData,
+        handleClose,
       }}
     >
       {children}
