@@ -4,7 +4,6 @@ function FormSuggestMessage({ idx }) {
   const { email, firstName, lastName, telLength, showMessage, exist } =
     useMyContext();
 
-  console.log(firstName);
   return (
     <p className="text-red-600 text-sm mb-1">
       {firstName.length > 0 && idx === 0 && "Max length is 30 characters!"}

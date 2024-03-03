@@ -47,6 +47,23 @@ const regUser = async (req, res, next) => {
   }
 };
 
+// Fetch Data
+const getData = async (req, res, next) => {
+  try {
+    const users = await User.find();
+    return successResponse(res, {
+      statusCode: 200,
+      message: "all data fetched successfully",
+      payload: {
+        user: users,
+      },
+    });
+  } catch (error) {
+    next(err);
+  }
+};
+
 module.exports = {
   regUser,
+  getData,
 };

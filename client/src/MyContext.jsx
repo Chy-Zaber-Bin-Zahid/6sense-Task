@@ -12,6 +12,8 @@ function MyProvider({ children }) {
   const [exist, setExist] = useState(false);
   const [added, setAdded] = useState(false);
   const [phone, setPhone] = useState("");
+  const [change, setChange] = useState("form");
+  const [userData, setUserData] = useState([]);
 
   return (
     <MyContext.Provider
@@ -32,6 +34,10 @@ function MyProvider({ children }) {
         setAdded,
         phone,
         setPhone,
+        change,
+        setChange,
+        userData,
+        setUserData,
       }}
     >
       {children}

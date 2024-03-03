@@ -1,5 +1,6 @@
 import { useMyContext } from "../MyContext";
 import useFormHook from "../hooks/formHook";
+import SwapBtn from "./SwapBtn";
 import FormInput from "./Form child/FormInput";
 import FormSuggestMessage from "./Form child/FormSuggestMessage";
 
@@ -36,9 +37,7 @@ function Form() {
         </button>
       </form>
       {/* Table | Form change btn */}
-      <button className="bg-white px-2 py-1 rounded mt-2 hover:-translate-y-1 transition-all duration-300 active:translate-y-0 font-semibold text-sm shadow-md">
-        See User Table
-      </button>
+      <SwapBtn />
     </section>
   );
 }
